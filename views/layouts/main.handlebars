@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<center>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Team Managment</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <div class="flex-column justify-space-around">
+  <header class="display-flex justify-space-between align-center p-2">
+    <h1>
+     <p style="text-align:left;">Dream Team Managment</p>
+    </h1>
+    {{#if logged_in}}
+    <nav>
+      <p style="text-align:left;">
+      <button class="btn" id="logout">logout</button>
+      </p>
+    </nav>
+    {{/if}}
+  </header>
+  <main class="container container-fluid mt-5">
+    {{{ body }}}
+  </main>
+  <footer>
+      
+  </footer>
+  </div>
+
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
+</center>
