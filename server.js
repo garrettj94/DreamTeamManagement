@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("main", {
+    res.render("login", {
         logged_in :true,
         posts: dataFromDatabase
     })
