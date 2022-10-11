@@ -15,3 +15,13 @@ CREATE TABLE manager (
   department_id INT,
   total_enrolled INT
 )
+
+CREATE TABLE employee (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  employee_name VARCHAR(30) NOT NULL,
+  department_id INT,
+  manager_id INT,
+  total_enrolled INT
+)
+
+
