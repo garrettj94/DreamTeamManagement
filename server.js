@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("login", {
+    res.render("profile.handlebars", {
         logged_in :true,
         posts: dataFromDatabase
     })
