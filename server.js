@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("mainpage", {
+    res.render("sales", {
         logged_in :true,
         posts: dataFromDatabase
     })
