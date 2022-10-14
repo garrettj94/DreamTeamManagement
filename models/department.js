@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config');
+const sequelize = require('../config/connection');
 
 class Department extends Model {}
 
@@ -26,6 +26,13 @@ Department.init(
                 key: 'id',
             },
         },
+        manager_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'manager',
+                key: 'id'
+            }
+        }
     },
     {
         sequelize,

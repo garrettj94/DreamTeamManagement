@@ -3,16 +3,17 @@ const exphbs = require('express-handlebars');
 const app = express();
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const routes = require('./controllers')
 
-const sess = {
-    secret: 'Super secret secret',
-    cookie: {},
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-      db: sequelize,
-    }),
-  };
+// const sess = {
+//     secret: 'Super secret secret',
+//     cookie: {},
+//     resave: false,
+//     saveUninitialized: true,
+//     store: new SequelizeStore({
+//       db: sequelize,
+//     }),
+//   };
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
@@ -43,6 +44,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(express.static("public"))
 app.use(passport.initialize());
+app.use(routes);
 
 //routes
 
@@ -68,7 +70,7 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("profile.handlebars", {
+    res.render("homepage", {
         logged_in :true,
         posts: dataFromDatabase
     })
