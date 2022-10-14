@@ -1,21 +1,21 @@
 const router = require('express').Router();
-const { teamMembers } = require('../../models');
+const { Employees } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        const newTeamMember = await teamMembers.create({
+        const newEmployee = await Employees.create({
             ...req.body,
             team_id: req.session.team_id,
         });
 
-        res.status(200).json(newTeamMember);
+        res.status(200).json(newEmployee);
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-router.put('/:teamMembers_id', (req, res) => {
-    teamMembers.update(
+router.put('/:employees_id', (req, res) => {
+    Employees.update(
         {
             name: req.body.name,
             role: req.body.role,
@@ -23,12 +23,12 @@ router.put('/:teamMembers_id', (req, res) => {
         },
         {
             where: {
-                teamMembers_id: req.params.teamMembers_id
+                employees_id: req.params.employees_id
             },
         }
     )
-    .then((updatedTeamMember) => {
-        req.json(updatedTeamMember);
+    .then((updatedEmployees) => {
+        req.json(updatedEmployees);
     })
     .catch((err) => {
         console.log(err);
@@ -38,19 +38,19 @@ router.put('/:teamMembers_id', (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const teamMemberData = await teamMembers.destroy({
+        const employeeData = await Employees.destroy({
             where: {
                 id: req.params.id,
                 team_id: req.session.user_id,
             },
         });
 
-        if(!teamMemberData) {
-            res.status(404).json({ message: 'No team member found with that id. '});
+        if(!employeeData) {
+            res.status(404).json({ message: 'No employee found with that id. '});
             return;
         }
 
-        res.status(200).json(teamMemberData);
+        res.status(200).json(employeeData);
     } catch (err) {
         res.status(500).json(err);
     }
