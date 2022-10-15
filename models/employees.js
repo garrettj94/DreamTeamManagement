@@ -23,10 +23,10 @@ Employees.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        team_id: {
+        department_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'team',
+                model: 'department',
                 key: 'id',
             },
         },
