@@ -70,7 +70,7 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("homepage", {
+    res.render("login", {
         logged_in :true,
         posts: dataFromDatabase
     })
