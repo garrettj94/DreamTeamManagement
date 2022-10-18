@@ -1,11 +1,20 @@
 const router = require('express').Router();
 const  { Department }  = require('../../models');
 
+router.get('/', async (req, res) => {
+    console.log("HIT ME BABY ONE MORE TIME")
+    try {
+        const departmentData = await Department.findAll();
+        res.status(200).json(departmentData)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+});
+
 router.post('/', async (req, res) => {
     try {
         const newDepartment = await Department.create({
             ...req.body,
-            user_id: req.session.user_id,
         });
 
         res.status(200).json(newDepartment);
@@ -34,10 +43,9 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const departmentData = await department.destroy({
+        const departmentData = await Department.destroy({
             where: {
                 id: req.params.id,
-                user_id: req.session.user_id,
             },
         });
 

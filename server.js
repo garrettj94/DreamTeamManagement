@@ -5,6 +5,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const routes = require('./controllers')
 const path = require('path')
+const sequelize = require('./config/connection')
 
 
 
@@ -63,14 +64,17 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("sales", {
+    res.render("login", {
         logged_in :true,
         posts: dataFromDatabase
     })
 })
 
 //run server
-app.listen(PORT, (err) => {
-    if(err) throw err;
-    console.log('I am alive')
-})
+// app.listen(PORT, (err) => {
+//     if(err) throw err;
+//     console.log('I am alive')
+// })
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
+  });

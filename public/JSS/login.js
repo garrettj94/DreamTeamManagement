@@ -20,3 +20,29 @@ const loginFormHandler = async (event) => {
 };
 
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+
+const signupFormHandler = async (event) => {
+    event.preventDefault();
+
+    const signupEmail = document.querySelector('#email-signup').value.trim();
+    const signupPassword = document.querySelector('#password-signup').value.trim();
+
+    console.log(signupEmail, signupPassword)
+    
+    if (signupEmail && signupPassword) {
+        const signupResponse = await fetch('/api/users', {
+            method: 'POST',
+            body: JSON.stringify({ signupEmail, signupPassword }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (signupResponse.ok) {
+            document.location.replace('/');
+    
+        } else {
+            alert('Signup failed, please try again');
+        }
+    } 
+    
+}
+
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);

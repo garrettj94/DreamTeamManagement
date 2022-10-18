@@ -1,11 +1,20 @@
 const router = require('express').Router();
 const { Employees } = require('../../models');
 
+router.get('/', async (req, res) => {
+    try {
+        const employeesData = await Employees.findAll();
+        res.status(200).json(employeesData)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
 router.post('/', async (req, res) => {
     try {
         const newEmployee = await Employees.create({
-            ...req.body,
-            team_id: req.session.team_id,
+            employee_name: req.body.employee_name,
+            employee_role: req.body.employee_role,
+            employee_description: req.body.employee_description
         });
 
         res.status(200).json(newEmployee);
@@ -17,7 +26,7 @@ router.post('/', async (req, res) => {
 router.put('/:employees_id', (req, res) => {
     Employees.update(
         {
-            name: req.body.name,
+            employee_name: req.body.employee_name,
             role: req.body.role,
             description: req.body.description
         },
@@ -41,7 +50,6 @@ router.delete('/:id', async (req, res) => {
         const employeeData = await Employees.destroy({
             where: {
                 id: req.params.id,
-                team_id: req.session.user_id,
             },
         });
 
