@@ -4,16 +4,9 @@ const app = express();
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const routes = require('./controllers')
+const path = require('path')
 
-// const sess = {
-//     secret: 'Super secret secret',
-//     cookie: {},
-//     resave: false,
-//     saveUninitialized: true,
-//     store: new SequelizeStore({
-//       db: sequelize,
-//     }),
-//   };
+
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
@@ -42,7 +35,7 @@ app.set("view engine", "handlebars")
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-app.use(express.static("public"))
+app.use(express.static(path.join(__dirname,"public")))
 app.use(passport.initialize());
 app.use(routes);
 
@@ -70,7 +63,7 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("login", {
+    res.render("sales", {
         logged_in :true,
         posts: dataFromDatabase
     })
