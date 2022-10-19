@@ -3,13 +3,11 @@
     </div>
     <br>
     <br>
+    {{#each departments | department |}}
     <div class="col">
-      <a href="./sales.handlebars"><button>Sales</button></a>
-    </div>
-    <br>
-    <br>
-    <div class="col">
-      <a href="./webdeveloper.handlebars"><button>Web Developer</button></a>
-    </div>
+      <p>
+        <a href="/new/{{department.name}}></a>
+      </p>
+      
   </div>
   

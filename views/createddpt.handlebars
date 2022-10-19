@@ -1,0 +1,48 @@
+<div class="col-auto">
+  <h2>{{department.name}}</h2>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Meet the Team:</h3>
+
+    {{#if department.name }}
+    <div class="col-md-6 project-list">
+      <h3>Department Manager</h3>
+      {{#each Managers as | Manager |}}
+      <div class="row mb-2">
+        <div class="col-md-8">
+          <h4><a href="/manager/{{manager.id}}">{{manager.name}}</a></h4>
+        </div>
+        <div class="col-md-4">
+          {{!-- <button class="btn btn-sm btn-danger" data-id="{{project-id}}">DELETE</button> --}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="col-md-6 project-list">
+      <h3>Employee Name</h3>
+      {{#each Employees as | Employee |}}
+      <div class="row mb-2">
+        <div class="col-md-8">
+          <h4><a href="/employee/{{Managers.id}}">{{Employees.name}}</a></h4>
+        </div>
+        <div class="col-md-4">
+          {{!-- <button class="btn btn-sm btn-danger" data-id="{{project-id}}">DELETE</button> --}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    {{/if}}
+
+
+
+
+
+
+
+
+
+  </div>
