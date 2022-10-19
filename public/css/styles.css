@@ -1,7 +1,59 @@
 
 h1 {
-    color: red;
-}
-#email{
     color: blue;
+    
+}
+
+.newdept{
+    align-items: center;
+    text-align: left;
+    width: 200px;
+    height: 25px;
+    margin: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#homepage{
+    align-items: center;
+    text-align: left;
+    width: 200px;
+    height: 25px;
+    margin: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.newemployee{
+    align-items: center;
+    text-align: left;
+    width: 200px;
+    height: 25px;
+    margin: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.saleteam{
+    align-items: center;
+    text-align: left;
+    width: 200px;
+    height: 25px;
+    margin: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.webteam{
+    align-items: center;
+    text-align: left;
+    width: 200px;
+    height: 25px;
+    margin: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
