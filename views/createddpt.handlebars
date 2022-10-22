@@ -9,16 +9,14 @@
     {{#if department.name }}
     <div class="col-md-6 project-list">
       <h3>Department Manager</h3>
-      {{#each Managers as | Manager |}}
       <div class="row mb-2">
         <div class="col-md-8">
-          <h4>{{manager.name}}</h4>
+          <h4>{{department.manager}}</a></h4>
         </div>
         <div class="col-md-4">
           {{!-- <button class="btn btn-sm btn-danger" data-id="{{project-id}}">DELETE</button> --}}
         </div>
       </div>
-      {{/each}}
     </div>
 
     <div class="col-md-6 project-list">
@@ -26,7 +24,7 @@
       {{#each Employees as | Employee |}}
       <div class="row mb-2">
         <div class="col-md-8">
-          <h4>{{Employees.name}}</h4>
+          <h4>{{Employees.name}}</a></h4>
         </div>
         <div class="col-md-4">
           {{!-- <button class="btn btn-sm btn-danger" data-id="{{project-id}}">DELETE</button> --}}
