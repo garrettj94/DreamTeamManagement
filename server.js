@@ -64,7 +64,7 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("new", {
+    res.render("login", {
         logged_in :true,
         posts: dataFromDatabase
     })

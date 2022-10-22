@@ -15,10 +15,6 @@ Manager.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        total_enrolled: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         department_id: {
             type: DataTypes.INTEGER,
             references: {

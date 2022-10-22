@@ -12,7 +12,7 @@
       {{#each Managers as | Manager |}}
       <div class="row mb-2">
         <div class="col-md-8">
-          <h4><a href="/manager/{{manager.id}}">{{manager.name}}</a></h4>
+          <h4>{{manager.name}}</h4>
         </div>
         <div class="col-md-4">
           {{!-- <button class="btn btn-sm btn-danger" data-id="{{project-id}}">DELETE</button> --}}
@@ -26,7 +26,7 @@
       {{#each Employees as | Employee |}}
       <div class="row mb-2">
         <div class="col-md-8">
-          <h4><a href="/employee/{{Managers.id}}">{{Employees.name}}</a></h4>
+          <h4>{{Employees.name}}</h4>
         </div>
         <div class="col-md-4">
           {{!-- <button class="btn btn-sm btn-danger" data-id="{{project-id}}">DELETE</button> --}}

@@ -15,10 +15,6 @@ Department.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        members: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
