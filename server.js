@@ -108,7 +108,7 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("login", {
+    res.render("homepage", {
 
         logged_in :true,
         posts: dataFromDatabase
