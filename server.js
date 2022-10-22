@@ -5,7 +5,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const routes = require('./controllers')
 const path = require('path')
-const sequelize = require('./config/connection')
+const sequelize = require('./config/connection');
 
 
 
@@ -14,11 +14,55 @@ passport.use(new LocalStrategy(
       User.findOne({ username: username }, function (err, user) {
         if (err) { return done(err); }
         if (!user) { return done(null, false); }
-        if (!user.verifyPassword(password)) { return done(null, false); }
+        if (!user.checkPassword(password)) { return done(null, false); }
         return done(null, user);
       });
     }
   ));
+
+  //passport.use(new PassportLocal.Strategy({
+  //  usernameField: 'email'
+  //}, async (email, password, done) => {
+    // try {
+    //   const userData = await User.findAll({
+    //     attributes: { exclude: ['password'] },
+    //     order: [['name', 'ASC']],
+    // });
+    // }
+    // catch(error) {
+    //   done(error);
+    // }
+
+    // try {
+    //   const userData = await User.findOne({ where: { email: req.body.email } });
+  
+    //   if (!userData) {
+    //     res
+    //       .status(400)
+    //       .json({ message: 'Incorrect email or password, please try again' });
+    //     return;
+    //   }
+  
+    //   const validPassword = await userData.checkPassword(req.body.password);
+  
+    //   if (!validPassword) {
+    //     res
+    //       .status(400)
+    //       .json({ message: 'Incorrect email or password, please try again' });
+    //     return;
+    //   }
+  
+    //   req.session.save(() => {
+    //     req.session.user_id = userData.id;
+    //     req.session.logged_in = true;
+        
+    //     res.json({ user: userData, message: 'You are now logged in!' });
+    //   });
+  
+    // } catch (err) {
+    //   done(err);
+    // }
+  //}));
 
   app.post('/login', 
   passport.authenticate('local', { failureRedirect: '/login' }),
@@ -64,7 +108,11 @@ app.get('/', (req, res) => {
     ]
     
     
-    res.render("login", {
+
+=======
+    res.render("homepage", {
+
+
         logged_in :true,
         posts: dataFromDatabase
     })
