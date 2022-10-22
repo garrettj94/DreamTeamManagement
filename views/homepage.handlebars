@@ -3,11 +3,14 @@
     </div>
     <br>
     <br>
-    {{#each departments as |department|}}
+
+    {{#each departments as | department |}}
+
     <div class="col">
       <p>
-        <a href="/new/{{department.name}}></a>
+        <a href="/new/{{department.name}}"></a>
       </p>
+      {{/each}}
       
   </div>
   

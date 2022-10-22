@@ -108,7 +108,10 @@ app.get('/', (req, res) => {
     ]
     
     
+
+=======
     res.render("homepage", {
+
 
         logged_in :true,
         posts: dataFromDatabase
