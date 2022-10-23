@@ -15,9 +15,9 @@ Department.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        members: {
+        manager: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -26,13 +26,6 @@ Department.init(
                 key: 'id',
             },
         },
-        manager_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'manager',
-                key: 'id'
-            }
-        }
     },
     {
         sequelize,
@@ -43,4 +36,4 @@ Department.init(
     }
 );
 
-module.exports = Department;
+module.exports = Department
