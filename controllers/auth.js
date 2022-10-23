@@ -36,4 +36,6 @@ router.post('/login', passport.authenticate('local', {
   failureMessage: true
 }));
 
+router.post();
+
 module.exports = router;
