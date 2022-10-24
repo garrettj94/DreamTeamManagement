@@ -14,4 +14,20 @@
       {{/each}}
       
   </div>
+   <div class="col" id="homepage">
+      <a href="/newdepartment" class="depart" ><button>Add New Department</button></a>
+    </div>
+    <br>
+    <br>
+<p>{{departments.name}}</p>
+    {{#each departments as | department |}}
+{{log department}}
+
+    <div class="col">
+      <p>
+        <a href="/new/{{department.name}}">{{department.name}}</a>
+      </p>
+      {{/each}}
+      
+  </div>
   
