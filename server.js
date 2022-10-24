@@ -25,13 +25,13 @@ const sess = {
   })
 };
 //
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+app.use(express.static(path.join(__dirname,"public")))
 app.use(session(sess));
 app.engine("handlebars", hbs.engine)
 app.set("view engine", "handlebars")
 
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
-app.use(express.static(path.join(__dirname,"public")))
 app.use(passport.initialize());
 app.use(passport.authenticate('session'));
 app.use(cookieParser());
@@ -48,24 +48,24 @@ app.use(routes);
 
 app.get('/', (req, res) => {
     
-    const dataFromDatabase = [
-        {
-            post_text: 'I am hungry',
-            post_user: 'Ralph'
-        },
-        {
-            post_text: 'I am TIRED',
-            post_user: 'Bob'
-        },
-        {
-            post_text: 'I am happy',
-            post_user: 'Claire'
-        },
-        {
-            post_text: 'I am happy',
-            post_user: 'Claire'
-        },
-    ]
+    // const dataFromDatabase = [
+    //     {
+    //         post_text: 'I am hungry',
+    //         post_user: 'Ralph'
+    //     },
+    //     {
+    //         post_text: 'I am TIRED',
+    //         post_user: 'Bob'
+    //     },
+    //     {
+    //         post_text: 'I am happy',
+    //         post_user: 'Claire'
+    //     },
+    //     {
+    //         post_text: 'I am happy',
+    //         post_user: 'Claire'
+    //     },
+    // ]
     
     
 
@@ -74,7 +74,7 @@ app.get('/', (req, res) => {
 
 
         logged_in :true,
-        posts: dataFromDatabase
+        // posts: dataFromDatabase
     })
 })
 

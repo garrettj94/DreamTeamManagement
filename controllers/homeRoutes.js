@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { User } = require('../models');
-const withAuth = require('./api/auth');
+const { User, Department, Employees } = require('../models');
+const withAuth = require('./auth');
 
 router.post('/', withAuth, async (req, res) => {
     try {
@@ -28,5 +28,28 @@ router.get('/login', (req, res) => {
 
     res.render('login')
 });
+
+router.get('/homepage', async (req, res) => {
+    try {
+        const departmentData = await Department.findAll({})
+        console.log(departmentData)
+
+        const departments = await departmentData.map((department) => department.get({ plain: true }));
+        console.log(departments)
+        res.render('homepage', {departments})
+    } catch (err) {
+        console.error(err)
+        res.status(500).json(err)
+    }
+});
+
+router.get('/newdepartment', (req, res) => {
+    res.render('new')
+})
+
+router.get('/newemployee', (req, res) => {
+    res.render('employee')
+})
+
 
 module.exports = router;
