@@ -8,13 +8,24 @@ const session = require('express-session');
 const routes = require('./controllers')
 const path = require('path')
 const sequelize = require('./config/connection');
-
+//added this
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const PORT = process.env.PORT || 3001
 
 // middleware
 const hbs = exphbs.create({});
-
+//added this
+const sess = {
+  secret: 'secret secret secret',
+  resave: false,
+  saveUninitialized: false,
+  store: new SequelizeStore({
+    db:sequelize
+  })
+};
+//
+app.use(session(sess));
 app.engine("handlebars", hbs.engine)
 app.set("view engine", "handlebars")
 
@@ -24,11 +35,13 @@ app.use(express.static(path.join(__dirname,"public")))
 app.use(passport.initialize());
 app.use(passport.authenticate('session'));
 app.use(cookieParser());
-app.use(session({
-    secret: 'secret secret secret',
-    resave: false,
-    saveUninitialized: false,
-}));
+//added this
+// moved app.use(session(sess));
+// session({
+//   secret: 'secret secret secret',
+//   resave: false,
+//   saveUninitialized: false,
+// }));
 app.use(routes);
 
 //routes
@@ -57,7 +70,7 @@ app.get('/', (req, res) => {
     
 
 
-    res.render("homepage", {
+    res.render("login", {
 
 
         logged_in :true,
