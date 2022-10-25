@@ -12,7 +12,7 @@ const newEmployeeFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json'},
         });
         if (response.ok) {
-            document.location.replace('/')
+            document.location.replace('/homepage')
         } else {
             alert('Creation of new employee failed, please try again.')
         }
