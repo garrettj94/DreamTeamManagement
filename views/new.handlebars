@@ -1,12 +1,12 @@
-<form class="newdept">
+<form class="newdept" id="newdept">
   <div class="form-group">
     <label for="DepartmentName" class="depname">Department Name:</label>
-    <input type="text" class="form-control" id="DepartmentName" placeholder="">
+    <input type="text" class="form-control" id="departmentName" placeholder="">
   </div>
   <br>
   <div class="form-group">
     <label for="ManagerName">Manager Name:</label>
-    <input type="text" class="form-control" id="ManagerName" placeholder="">
+    <input type="text" class="form-control" id="managerName" placeholder="">
   </div>
   {{!-- <br>
   <div class="form-group">
@@ -24,6 +24,8 @@
   </div> --}}
   <br>
   <div class="col">
-      <a href="./homepage.handlebars"><button id="submitbtn">Submit</button></a>
+      <a href="/homepage"><button id="submitbtn">Submit</button></a>
     </div>
 </form>
+
+<script src="./JSS/department.js"></script>

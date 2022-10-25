@@ -12,13 +12,14 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+    console.log({...req.body})
     try {
-        const newDepartment = await Department.create({
-            ...req.body,
-        });
+        const newDepartment = await Department.create({...req.body});
+        console.log(newDepartment)
 
         res.status(200).json(newDepartment);
     } catch (err) {
+        console.error(err)
         res.status(400).json(err);
     }
 });

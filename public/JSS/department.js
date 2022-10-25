@@ -1,10 +1,11 @@
+console.log("GET CONNECTED FOR FREE")
 const newDepartmentFormHandler = async (event) => {
     event.preventDefault();
 
-    const department = document.querySelector('#DepartmentName').value.trim();
-    const manager = document.querySelector('#ManagerName').value.trim();
-
-    if (department && manager) {
+    const name = document.querySelector('#departmentName').value.trim();
+    const manager = document.querySelector('#managerName').value.trim();
+console.log(name, manager)
+    if (name && manager) {
         const response = await fetch('/api/department', {
             method: 'POST',
             body: JSON.stringify({ name, manager}),
@@ -19,4 +20,4 @@ const newDepartmentFormHandler = async (event) => {
     }
 };
 
-document.querySelector('.newdept').addEventListener('submit', newDepartmentFormHandler);
+document.querySelector('#newdept').addEventListener('submit', newDepartmentFormHandler);

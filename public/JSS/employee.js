@@ -1,18 +1,18 @@
 const newEmployeeFormHandler = async (event) => {
     event.preventDefault();
 
-    const employeeName = document.querySelector('#EmployeeName').value.trim();
-    const employeeRole = document.querySelector('#EmployeeROLE').value.trim();
-    const employeeDescription = document.querySelector('#JobDescription').value.trim();
+    const name = document.querySelector('#EmployeeName').value.trim();
+    const role = document.querySelector('#EmployeeROLE').value.trim();
+    const description = document.querySelector('#JobDescription').value.trim();
 
-    if (employeeName && employeeRole && employeeDescription) {
+    if (name && role && description) {
         const response = await fetch('/api/employees', {
             method: 'POST',
             body: JSON.stringify({name, role, description }),
             headers: { 'Content-Type': 'application/json'},
         });
         if (response.ok) {
-            document.location.replace('/')
+            document.location.replace('/homepage')
         } else {
             alert('Creation of new employee failed, please try again.')
         }
