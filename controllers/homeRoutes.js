@@ -36,7 +36,7 @@ router.get('/homepage', async (req, res) => {
 
         const departments = await departmentData.map((department) => department.get({ plain: true }));
         console.log(departments)
-        res.render('homepage', {departments})
+        res.render('homepage', {departments, logged_in: req.session.logged_in})
     } catch (err) {
         console.error(err)
         res.status(500).json(err)
@@ -49,6 +49,20 @@ router.get('/newdepartment', (req, res) => {
 
 router.get('/newemployee', (req, res) => {
     res.render('employee')
+})
+
+router.get('/createddpt', async (req, res) => {
+    try {
+        const employeeData = await Employees.findAll({})
+        console.log(employeeData)
+
+        const employees = await employeeData.map((employee) => employee.get({ plain: true }));
+        console.log(employees)
+        res.render('createddpt', {employees, logged_in: req.session.logged_in})
+    } catch (err) {
+        console.error(err)
+        res.status(500).json(err)
+    }
 })
 
 
