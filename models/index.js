@@ -1,5 +1,5 @@
 const Department = require('./department');
-const Employees = require('./employees');
+const Employee = require('./employee');
 const User = require('./user');
 
 User.hasMany(Department, {
@@ -7,14 +7,14 @@ User.hasMany(Department, {
     onDelete: 'CASCADE'
 });
 
-Employees.belongsTo(Department, {
-    foreignKey: 'employees_id'
+Employee.belongsTo(Department, {
+    foreignKey: 'employee_id'
 })
 
-Department.hasMany(Employees, {
+Department.hasMany(Employee, {
     foreignKey: 'department_id',
     onDelete: 'CASCADE'
 })
 
 
-module.exports = { User, Employees, Department }
+module.exports = { User, Employee, Department }

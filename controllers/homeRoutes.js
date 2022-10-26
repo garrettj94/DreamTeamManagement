@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Department, Employees } = require('../models');
+const { User, Department, Employee } = require('../models');
 const withAuth = require('./auth');
 
 router.post('/', withAuth, async (req, res) => {
@@ -43,17 +43,9 @@ router.get('/homepage', async (req, res) => {
     }
 });
 
-router.get('/newdepartment', (req, res) => {
-    res.render('new')
-})
-
-router.get('/newemployee', (req, res) => {
-    res.render('employee')
-})
-
 router.get('/createddpt', async (req, res) => {
     try {
-        const employeeData = await Employees.findAll({})
+        const employeeData = await Employee.findAll({})
         console.log(employeeData)
 
         const employees = await employeeData.map((employee) => employee.get({ plain: true }));
@@ -64,6 +56,16 @@ router.get('/createddpt', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+router.get('/newdepartment', (req, res) => {
+    res.render('new')
+})
+
+router.get('/newemployee', (req, res) => {
+    res.render('employee')
+})
+
+
 
 
 module.exports = router;
