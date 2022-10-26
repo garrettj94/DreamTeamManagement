@@ -5,6 +5,6 @@ const employeesRoutes = require('./employeesRoutes');
 
 router.use('/users', userRoutes);
 router.use('/department', departmentRoutes);
-router.use('/employee', employeesRoutes);
+router.use('/employees', employeesRoutes);
 
 module.exports = router;

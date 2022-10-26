@@ -3,7 +3,7 @@ const { Employee } = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
-        const employeesData = await Employees.findAll();
+        const employeesData = await Employee.findAll();
         res.status(200).json(employeesData)
     } catch (err) {
         res.status(400).json(err)
