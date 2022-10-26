@@ -45,12 +45,19 @@ router.get('/homepage', async (req, res) => {
 
 router.get('/createddpt', async (req, res) => {
     try {
+
+        const departmentData = await Department.findAll({})
+        console.log(departmentData)
+
+        const departments = await departmentData.map((department) => department.get({ plain: true }));
+        console.log(departments);
+
         const employeeData = await Employee.findAll({})
         console.log(employeeData)
 
         const employees = await employeeData.map((employee) => employee.get({ plain: true }));
         console.log(employees)
-        res.render('createddpt', {employees, logged_in: req.session.logged_in})
+        res.render('createddpt', {employees, departments,  logged_in: req.session.logged_in})
     } catch (err) {
         console.error(err)
         res.status(500).json(err)
