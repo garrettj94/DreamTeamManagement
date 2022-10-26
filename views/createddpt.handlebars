@@ -18,13 +18,13 @@
         </div>
       </div>
     </div>
-
+    {{#each Employees as | Employee |}}
     <div class="col-md-6 project-list">
-      <h3>Employee Name</h3>
-      {{#each Employees as | Employee |}}
       <div class="row mb-2">
         <div class="col-md-8">
-          <h4>{{Employees.name}}</a></h4>
+          <h4>{{employee.name}}</a></h4>
+          <p>{{employee.role}}</p>
+          <p>{{employee.description}}</p>
         </div>
         <div class="col-md-4">
           {{!-- <button class="btn btn-sm btn-danger" data-id="{{project-id}}">DELETE</button> --}}
