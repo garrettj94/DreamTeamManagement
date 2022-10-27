@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const  { Department }  = require('../../models');
 
+// retrieve department data from api
 router.get('/', async (req, res) => {
     console.log("HIT ME BABY ONE MORE TIME")
     try {
@@ -11,6 +12,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// add department data to api
 router.post('/', async (req, res) => {
     console.log({...req.body})
     try {
@@ -24,6 +26,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// update department data in api
 router.put('/:id', async (req, res) => {
     try{
         const departmentData = await Department.update({
@@ -42,6 +45,7 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+// delete department data in api
 router.delete('/:id', async (req, res) => {
     try {
         const departmentData = await Department.destroy({

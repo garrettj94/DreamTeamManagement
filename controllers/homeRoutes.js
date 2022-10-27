@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Department, Employee } = require('../models');
 const withAuth = require('./auth');
 
+// 
 router.post('/', withAuth, async (req, res) => {
     try {
         const userData = await User.findAll({
@@ -20,6 +21,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+// render the login page, redirect the user if logged in successfully
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/');
@@ -29,6 +31,7 @@ router.get('/login', (req, res) => {
     res.render('login')
 });
 
+// render the homepage and seralize department data
 router.get('/homepage', async (req, res) => {
     try {
         const departmentData = await Department.findAll({})
@@ -43,6 +46,7 @@ router.get('/homepage', async (req, res) => {
     }
 });
 
+// render individual department pages and serialize employee data
 router.get('/createddpt/:id', async (req, res) => {
     try {
 
@@ -67,10 +71,12 @@ router.get('/createddpt/:id', async (req, res) => {
     }
 })
 
+// render page to create new department
 router.get('/newdepartment', (req, res) => {
     res.render('new')
 })
 
+// render page to create new employee
 router.get('/newemployee', (req, res) => {
     res.render('employee')
 })

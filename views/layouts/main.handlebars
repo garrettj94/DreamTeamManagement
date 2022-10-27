@@ -17,6 +17,7 @@
     <h1>
      <p style="text-align:center;">Dream Team Managment</p>
     </h1>
+    {{!-- render the logout button if user is logged in --}}
     {{#if logged_in}}
     <nav>
       <p style="text-align:left;">
@@ -33,7 +34,7 @@
       
   </footer>
   </div>
-
+  {{!-- include the logout javascript if user is logged in --}}
   {{#if logged_in}}
   <script src="./JSS/logout.js"></script>
   {{/if}}
