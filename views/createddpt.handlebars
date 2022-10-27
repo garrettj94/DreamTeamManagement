@@ -1,7 +1,7 @@
-{{#each departments as | department |}}
+{{!-- {{#each departments as | department |}} --}}
 {{log department}}
 <div class="col-auto">
-  <h2>{{department.name}}</h2>
+  <h2>{{department.name}}, Department ID: {{department.id}}</h2>
 </div>
 
 <div class="row mt-4">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-  {{/each}}
+  {{!-- {{/each}} --}}
 
     {{#each employees as | employee |}}
     {{log employee}}

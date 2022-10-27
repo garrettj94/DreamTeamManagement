@@ -36,28 +36,31 @@ router.get('/homepage', async (req, res) => {
 
         const departments = await departmentData.map((department) => department.get({ plain: true }));
         console.log(departments)
-        res.render('homepage', {departments, logged_in: req.session.logged_in})
+        res.render('homepage', { departments, logged_in: req.session.logged_in })
     } catch (err) {
         console.error(err)
         res.status(500).json(err)
     }
 });
 
-router.get('/createddpt', async (req, res) => {
+router.get('/createddpt/:id', async (req, res) => {
     try {
 
-        const departmentData = await Department.findAll({})
-        console.log(departmentData)
+        const departmentData = await Department.findByPk(req.params.id);
 
-        const departments = await departmentData.map((department) => department.get({ plain: true }));
-        console.log(departments);
+        const department = departmentData.get({ plain: true });
+        console.log(department);
 
-        const employeeData = await Employee.findAll({})
+        const employeeData = await Employee.findAll({
+            where: {
+                department_id : req.params.id
+            }
+        })
         console.log(employeeData)
 
         const employees = await employeeData.map((employee) => employee.get({ plain: true }));
         console.log(employees)
-        res.render('createddpt', {employees, departments,  logged_in: req.session.logged_in})
+        res.render('createddpt', { employees, department, logged_in: req.session.logged_in })
     } catch (err) {
         console.error(err)
         res.status(500).json(err)

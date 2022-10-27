@@ -25,7 +25,8 @@ router.put('/:employees_id', (req, res) => {
         {
             employee_name: req.body.employee_name,
             role: req.body.role,
-            description: req.body.description
+            description: req.body.description,
+            department_id: req.body.department_id
         },
         {
             where: {
