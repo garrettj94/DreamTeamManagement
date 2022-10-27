@@ -1,3 +1,4 @@
+// function to add a new department
 console.log("GET CONNECTED FOR FREE")
 const newDepartmentFormHandler = async (event) => {
     event.preventDefault();
@@ -6,6 +7,7 @@ const newDepartmentFormHandler = async (event) => {
     const manager = document.querySelector('#managerName').value.trim();
 console.log(name, manager)
     if (name && manager) {
+        // post to the api 
         const response = await fetch('/api/department', {
             method: 'POST',
             body: JSON.stringify({ name, manager}),

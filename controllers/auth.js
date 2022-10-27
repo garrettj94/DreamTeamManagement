@@ -1,8 +1,10 @@
+// passport functionality
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const express = require('express');
 const router = express.Router();
 
+// create a new session
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function (err, user) {
@@ -14,6 +16,7 @@ passport.use(new LocalStrategy(
   }
 ));
 
+// check for existing user information
 passport.use(new LocalStrategy(function verify(username, password, cb) {
   db.get('SELECT * FROM users WHERE username = ?', [ username ], function(err, row) {
     if (err) { return cb(err); }
@@ -29,6 +32,7 @@ passport.use(new LocalStrategy(function verify(username, password, cb) {
   });
 }));
 
+// end session upon logout
 router.post('/logout', function(req, res, next) {
   req.logout(function(err) {
     if (err) { return next(err); }
@@ -52,6 +56,7 @@ router.post('/login', (req, res, next) => {
   res.render('login');
 });
 
+// authenticate user information upon login and redirect to homepage
 router.post('/login', passport.authenticate('local', {
   successReturnToOrRedirect: '/',
   failureRedirect: '/login',

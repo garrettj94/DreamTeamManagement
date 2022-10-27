@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Employee } = require('../../models');
 
+// retrieve employee data from api
 router.get('/', async (req, res) => {
     try {
         const employeesData = await Employee.findAll();
@@ -8,7 +9,9 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(400).json(err)
     }
-})
+});
+
+// add new employee data to api
 router.post('/', async (req, res) => {
     console.log(req.body)
     try {
@@ -20,6 +23,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// update employee data in api
 router.put('/:employees_id', (req, res) => {
     Employee.update(
         {
@@ -43,6 +47,7 @@ router.put('/:employees_id', (req, res) => {
     });
 });
 
+// delete employee data from api
 router.delete('/:id', async (req, res) => {
     try {
         const employeeData = await Employee.destroy({

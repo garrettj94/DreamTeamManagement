@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// retrieve user data from api
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll();
@@ -10,6 +11,7 @@ router.get('/', async (req, res) => {
     }
 })
 
+// add new user data to api
 router.post('/', async (req, res) => {
     console.log(req.body)
     try {
@@ -29,6 +31,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// post user data to login to app
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { email: req.body.email }});
@@ -56,6 +59,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// post user data to logout of app
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
       req.session.destroy(() => {
@@ -66,6 +70,7 @@ router.post('/logout', (req, res) => {
     }
   });
 
+// delete user data from api
 router.delete('/:id', async (req, res) => {
     try {
         const userData = await User.destroy({

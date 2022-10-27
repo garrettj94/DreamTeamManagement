@@ -2,6 +2,7 @@ const Department = require('./department');
 const Employee = require('./employee');
 const User = require('./user');
 
+// relations
 User.hasMany(Department, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'

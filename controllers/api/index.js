@@ -3,6 +3,7 @@ const userRoutes = require('./userRoutes');
 const departmentRoutes = require('./departmentRoutes');
 const employeesRoutes = require('./employeesRoutes');
 
+// export api routes
 router.use('/users', userRoutes);
 router.use('/department', departmentRoutes);
 router.use('/employees', employeesRoutes);
